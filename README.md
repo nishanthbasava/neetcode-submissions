@@ -1,6 +1,4 @@
-# NeetCode Solutions — @nishanthbasava
-
-> Synced automatically from [NeetCode.io](https://neetcode.io) · Repository: `neetcode-submissions`
+# My Neetcode Solutions Log
 
 I do all of my problems in Python 👍🏽
 
@@ -14,4 +12,4 @@ I do all of my problems in Python 👍🏽
     ...
 ```
 
-This repository saves all of my successful submissions, but most of the time the last solution I developed for the problem was my best/most efficient solution. 
+This repository saves all of my successful submissions, but most of the time the last solution I developed for the problem was my best/most efficient solution. Hopefully I don't have to resort to Cluely on interviews after this
