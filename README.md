@@ -1,6 +1,6 @@
 # My Neetcode Solutions Log
 
-I do all of my problems in Python 👍🏽
+I do all of my problems in Python, might switch to C++ soon
 
 ## Repository structure
 
