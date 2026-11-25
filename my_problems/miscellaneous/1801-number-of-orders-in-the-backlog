@@ -1,0 +1,53 @@
+import heapq
+
+class Solution:
+    def getNumberOfBacklogOrders(self, orders: List[List[int]]) -> int:
+        buy_backlog = [] # max-heap
+        sell_backlog = [] # min-heap
+        count = 0
+
+        for order in orders:
+            if order[2] == 0: # buy order
+                while order[1] != 0:
+                    if not sell_backlog:
+                            break
+
+                    if sell_backlog[0][0] <= order[0]:
+                        if sell_backlog[0][1] <= order[1]:
+                            count -= sell_backlog[0][1]
+                            order[1] -= sell_backlog[0][1]
+                            heapq.heappop(sell_backlog)
+                        else:
+                            sell_backlog[0][1] -= order[1]
+                            count -= order[1]
+                            order[1] = 0
+                    else:
+                        break
+
+                if order[1] != 0:
+                    heapq.heappush(buy_backlog, [-order[0], order[1]])
+                    count += order[1]
+                
+            else: # sell order
+                while order[1] != 0:
+                    if not buy_backlog:
+                            break
+
+                    if -buy_backlog[0][0] >= order[0]:
+                        if buy_backlog[0][1] <= order[1]:
+                            count -= buy_backlog[0][1]
+                            order[1] -= buy_backlog[0][1]
+                            heapq.heappop(buy_backlog)
+                        else:
+                            buy_backlog[0][1] -= order[1]
+                            count -= order[1]
+                            order[1] = 0
+                    else:
+                        break
+
+                if order[1] != 0:
+                    heapq.heappush(sell_backlog, [order[0], order[1]])
+                    count += order[1]
+        
+        return count % (10**9 + 7)
+                
